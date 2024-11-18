@@ -1,0 +1,147 @@
+export const categoriesList = [
+  {
+    id: 1,
+    name: "Pizza",
+    image: require("../assets/images/categories/pizza.png"),
+  },
+  {
+    id: 2,
+    name: "Burger",
+    image: require("../assets/images/categories/Burger.png"),
+  },
+  {
+    id: 3,
+    name: "Italian",
+    image: require("../assets/images/categories/spghetti.png"),
+  },
+  {
+    id: 4,
+    name: "Chinese",
+    image: require("../assets/images/categories/chinese.png"),
+  },
+  {
+    id: 5,
+    name: "Noodles",
+    image: require("../assets/images/categories/spghetti.png"),
+  },
+  {
+    id: 6,
+    name: "Sweets",
+    image: require("../assets/images/categories/IceCream.png"),
+  },
+];
+
+export const featured = [
+  {
+    id: 1,
+    title: "Hot and Spicy",
+    description: "soft and tender fried chicken",
+    restaurants: [
+      {
+        id: 1,
+        name: "Papa Johns",
+        image: require("../assets/images/restaurants/papaJohn's.jpg"),
+        description: "Hot and spicy pizzas",
+        lng: 38.2145502,
+        lat: -85.5324269,
+        address: "434 Second Street",
+        stars: 4,
+        reviews: "4.4k",
+        category: "Pizza",
+        dishes: [
+          {
+            id: 1,
+            name: "Pepperoni Pizza",
+            image: require("../assets/images/dishes/Pizza.jpeg"),
+            description: "Classic pepperoni with extra cheese",
+            price: 14.99,
+          },
+          {
+            id: 2,
+            name: "Buffalo Chicken Pizza",
+            image: require("../assets/images/dishes/Pizza.jpeg"),
+            description: "Spicy buffalo chicken with ranch",
+            price: 16.99,
+          },
+          {
+            id: 3,
+            name: "Veggie Supreme",
+            image: require("../assets/images/dishes/Pizza.jpeg"),
+            description: "Loaded with fresh vegetables",
+            price: 15.99,
+          },
+        ],
+      },
+      {
+        id: 2,
+        name: "Burger King",
+        image: require("../assets/images/restaurants/papaJohn's.jpg"),
+        description: "Home of the Whopper",
+        lng: 38.2156782,
+        lat: -85.5398765,
+        address: "789 Main Street",
+        stars: 3.5,
+        reviews: "3.2k",
+        category: "Fast Food",
+        dishes: [
+          {
+            id: 1,
+            name: "Whopper",
+            image: require("../assets/images/dishes/Pizza.jpeg"),
+            description: "Flame-grilled beef burger with fresh toppings",
+            price: 6.99,
+          },
+          {
+            id: 2,
+            name: "Chicken Royale",
+            image: require("../assets/images/dishes/Pizza.jpeg"),
+            description: "Crispy chicken sandwich with lettuce",
+            price: 5.99,
+          },
+          {
+            id: 3,
+            name: "Fish Burger",
+            image: require("../assets/images/dishes/Pizza.jpeg"),
+            description: "Crispy fish fillet with tartar sauce",
+            price: 4.99,
+          },
+        ],
+      },
+      {
+        id: 3,
+        name: "Golden Dragon",
+        image: require("../assets/images/restaurants/papaJohn's.jpg"),
+        description: "Authentic Chinese Cuisine",
+        lng: 38.2178901,
+        lat: -85.5412345,
+        address: "123 Dragon Street",
+        stars: 4.5,
+        reviews: "2.8k",
+        category: "Chinese",
+        dishes: [
+          {
+            id: 1,
+            name: "Kung Pao Chicken",
+            image: require("../assets/images/dishes/Pizza.jpeg"),
+            description: "Spicy diced chicken with peanuts",
+            price: 12.99,
+          },
+          {
+            id: 2,
+            name: "Sweet and Sour Pork",
+            image: require("../assets/images/dishes/Pizza.jpeg"),
+            description: "Crispy pork in sweet and sour sauce",
+            price: 11.99,
+          },
+          {
+            id: 3,
+            name: "Vegetable Chow Mein",
+            image: require("../assets/images/dishes/Pizza.jpeg"),
+            description: "Stir-fried noodles with fresh vegetables",
+            price: 9.99,
+          },
+        ],
+      },
+    ],
+  },
+];
