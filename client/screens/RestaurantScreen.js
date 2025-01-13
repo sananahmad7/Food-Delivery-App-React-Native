@@ -6,6 +6,7 @@ import { themeColors } from "../theme";
 import { useNavigation } from "@react-navigation/native";
 import DishRow from "../components/DishRow";
 import CartIcon from "../components/cartIcon";
+import { StatusBar } from "expo-status-bar";
 const RestaurantScreen = () => {
   const { params } = useRoute();
   const item = params;
@@ -14,6 +15,7 @@ const RestaurantScreen = () => {
   return (
     <View>
       <CartIcon />
+      <StatusBar style="light" />
       <ScrollView>
         <View className="relative">
           <Image className="w-full h-72" source={item.image} />
