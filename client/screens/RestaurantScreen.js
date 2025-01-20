@@ -1,5 +1,5 @@
 import { View, Image, Text, ScrollView, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import * as Icon from "react-native-feather";
 import { themeColors } from "../theme";
@@ -7,11 +7,19 @@ import { useNavigation } from "@react-navigation/native";
 import DishRow from "../components/DishRow";
 import CartIcon from "../components/cartIcon";
 import { StatusBar } from "expo-status-bar";
+import { useDispatch, useSelector } from "react-redux";
+import { setRestaurant } from "../slices/restaurantSlice";
 const RestaurantScreen = () => {
   const { params } = useRoute();
   const item = params;
   const navigation = useNavigation();
-  // console.log("Restaurant : ", item);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (item && item.id) {
+      dispatch(setRestaurant({ ...item }));
+      console.log("data has been set to redux : ", item);
+    }
+  }, []);
   return (
     <View>
       <CartIcon />

@@ -1,10 +1,14 @@
 import { registerRootComponent } from "expo";
-import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { store } from "./store";
+import { Provider } from "react-redux";
 import Navigation from "./navigation";
 
 function App() {
-  return <Navigation />;
+  return (
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+  );
 }
 export default App;
 registerRootComponent(App);

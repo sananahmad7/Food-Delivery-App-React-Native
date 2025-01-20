@@ -4,10 +4,18 @@ import { featured } from "../constants/index.js";
 import { themeColors } from "../theme";
 import * as Icon from "react-native-feather";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import { selectRestaurant } from "../slices/restaurantSlice.js";
 const CartScreen = () => {
+  // console.log(
+  //   "Current state:",
+  //   useSelector((state) => state),
+  //   "\n sdsd"
+  // );
   const navigation = useNavigation();
-  const restaurants = featured[0].restaurants[0];
+  const restaurant = useSelector(selectRestaurant);
 
+  //console.log("Cart screen display data: ", restaurant);
   return (
     <View className="bg-white flex-1">
       {/*Back Button */}
@@ -21,7 +29,7 @@ const CartScreen = () => {
         </TouchableOpacity>
         <View>
           <Text className="text-center font-bold text-xl mt-4">Your cart</Text>
-          <Text className="text-center text-gray-500">{restaurants.name}</Text>
+          <Text className="text-center text-gray-500">{restaurant.name}</Text>
         </View>
       </View>
 
@@ -47,7 +55,7 @@ const CartScreen = () => {
         contentContainerStyle={{ paddingBottom: 50 }}
         className="bg-white pt-5"
       >
-        {restaurants.dishes.map((dish, index) => {
+        {restaurant.dishes.map((dish, index) => {
           return (
             <View
               key={index}
