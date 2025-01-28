@@ -2,8 +2,26 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { themeColors } from "../theme";
 import * as Icon from "react-native-feather";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  selectCartByItemsId,
+} from "../slices/cartSlice";
 
 const DishRow = ({ item }) => {
+  const dispatch = useDispatch();
+  const totalItems = useSelector((state) =>
+    selectCartByItemsId(state, item.id)
+  );
+  const handleDecrease = () => {
+    dispatch(removeFromCart({ id: item.id }));
+  };
+  const handleIncrease = () => {
+    dispatch(addToCart({ ...item }));
+    console.log(item);
+  };
+
   return (
     <View className="flex-row items-center bg-white p-3 rounded-3xl shadow-2xl mb-3 mx-2">
       <Image
@@ -25,6 +43,8 @@ const DishRow = ({ item }) => {
             <TouchableOpacity
               className="p-1 rounded-full"
               style={{ backgroundColor: themeColors.bgColor(1) }}
+              onPress={handleDecrease}
+              disabled={!totalItems.length}
             >
               <Icon.Minus
                 strokeWidth={2}
@@ -33,10 +53,11 @@ const DishRow = ({ item }) => {
                 stroke={"white"}
               />
             </TouchableOpacity>
-            <Text className="px-3">{3}</Text>
+            <Text className="px-3">{totalItems.length}</Text>
             <TouchableOpacity
               className="p-1 rounded-full"
               style={{ backgroundColor: themeColors.bgColor(1) }}
+              onPress={handleIncrease}
             >
               <Icon.Plus
                 strokeWidth={2}

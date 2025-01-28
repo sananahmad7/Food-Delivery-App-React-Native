@@ -7,7 +7,9 @@ import { featured } from "../constants/index.js";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { themeColors } from "../theme/index.js";
-
+import { selectRestaurant } from "../slices/restaurantSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import { emptyCart } from "../slices/cartSlice.js";
 const getLocationPermission = async () => {
   let { status } = await Location.requestPermissionsAsync();
   if (status !== "granted") {
@@ -16,8 +18,9 @@ const getLocationPermission = async () => {
 };
 
 const DeliveryScreen = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
-  const restaurants = featured[0].restaurants[0];
+  const restaurants = useSelector(selectRestaurant);
   console.log("Restaurants Data:", restaurants); // Debugging line
   console.log("Coordinates:", restaurants.lat, restaurants.lng);
   // Validate latitude and longitude
@@ -28,6 +31,10 @@ const DeliveryScreen = () => {
     lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
 
   console.log(isValidCoordinates(restaurants.lat, restaurants.lng));
+  const cancelOrder = () => {
+    navigation.navigate("Home");
+    dispatch(emptyCart());
+  };
   return (
     <View className="flex-1">
       {isValidCoordinates(restaurants.lat, restaurants.lng) ? ( // Check if coordinates are valid
@@ -99,7 +106,7 @@ const DeliveryScreen = () => {
             </TouchableOpacity>
             <TouchableOpacity
               className="bg-white p-2 rounded-full ml-2"
-              onPress={() => navigation.navigate("Home")}
+              onPress={cancelOrder}
             >
               <Icon.X
                 fill={themeColors.bgColor(1)}
